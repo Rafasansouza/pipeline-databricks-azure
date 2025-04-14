@@ -1,6 +1,17 @@
 # 📊 Pipeline de Dados com Azure Databricks e Data Factory
 
-Este projeto demonstra a criação e orquestração de pipelines de dados na nuvem utilizando o **Azure Databricks** e o **Azure Data Factory (ADF)**. O objetivo é ilustrar como essas ferramentas podem ser integradas para orquestrar transformações e cargas de dados em um ambiente escalável na nuvem.
+
+Este projeto demonstra a criação e orquestração de pipelines de dados na nuvem utilizando o **Azure Databricks**, o **Azure Data Factory (ADF)** e o **Azure Data Lake Storage (ADLS)**. O objetivo é ilustrar como essas ferramentas podem ser integradas para orquestrar transformações e cargas de dados em um ambiente escalável na nuvem.
+
+## 📝 Descrição do projeto
+
+Nós, como engenheiros de dados de uma empresa do setor imobiliário, fomos responsáveis por desenvolver um pipeline completo de engenharia de dados. A proposta do projeto é estruturar um Data Lake, iniciar a ingestão dos dados de imóveis na camada de entrada (inbound) e, a partir disso, aplicar as transformações necessárias para evoluí-los através das camadas bronze e silver dentro do lake.
+
+Além do processamento, também é fundamental garantir que esse pipeline seja executado automaticamente em intervalos regulares — neste caso, a cada hora — assegurando que os dados estejam sempre atualizados e prontos para uso.
+
+### Ferramentas utilizadas na empresa
+
+A empresa trabalha com o ecossistema de nuvem da Azure, utilizando o Azure Databricks como ambiente principal para o desenvolvimento e execução dos notebooks. Toda a manipulação e transformação dos dados foi feita em Scala, linguagem oficial do projeto. Para a orquestração e agendamento das execuções, utilizamos o Azure Data Factory, o que nos permitiu montar uma solução automatizada, escalável e integrada na nuvem.
 
 ## 🚀 Visão Geral
 
@@ -8,6 +19,7 @@ A solução desenvolvida envolve:
 
 - **Azure Data Factory**: Responsável pela orquestração das tarefas ETL, agendamento de execuções e gerenciamento do fluxo dos dados.
 - **Azure Databricks**: Utilizado para o processamento e transformação de dados, com notebooks escritos em **Scala**, linguagem principal do projeto.
+- **Azure Data Lake Storage (Gen2)**: Repositório utilizado para armazenar os dados brutos e transformados de forma estruturada e escalável.
 
 > 📝 Também foram incluídas versões dos notebooks em **Python** com o propósito de demonstrar familiaridade com a linguagem, embora a execução original tenha sido realizada em Scala.
 
@@ -15,6 +27,7 @@ A solução desenvolvida envolve:
 
 - [Azure Data Factory](https://azure.microsoft.com/pt-br/services/data-factory/)
 - [Azure Databricks](https://azure.microsoft.com/pt-br/services/databricks/)
+- [Azure Data Lake Storage Gen2](https://learn.microsoft.com/pt-br/azure/storage/data-lake-storage/)
 - [Apache Spark](https://spark.apache.org/) com linguagem **Scala**
 - [Scala](https://www.scala-lang.org/)
 - [Python](https://www.python.org/) *(demonstrativo complementar)*
@@ -37,19 +50,44 @@ pipeline-databricks-azure/
 
 ## ⚙️ Como Executar
 
-1. **Provisionamento de Recursos**:
-   - Crie um workspace no **Azure Databricks**.
-   - Configure uma instância do **Azure Data Factory**.
+### 1. Provisionamento de Recursos no Azure
 
-2. **Importação dos Artefatos**:
-   - Importe os notebooks Scala no seu workspace do Databricks.
-   - Configure os pipelines, triggers e linked services no ADF.
+- **Grupo de Recursos**: Crie um grupo de recursos para organizar todos os serviços relacionados.
+- **Azure Data Lake Storage Gen2**: Configure uma conta de armazenamento para armazenar os dados brutos e processados.
+- **Azure Databricks**: Crie um workspace para desenvolvimento e execução dos notebooks.
+- **Azure Data Factory**: Configure uma instância para orquestração dos pipelines.
 
-3. **Atualização das Conexões**:
-   - Atualize os arquivos de `linkedService` com suas credenciais e parâmetros específicos do ambiente Azure.
+### 2. Configuração do Azure Data Factory (ADF)
 
-4. **Execução da Pipeline**:
-   - Inicie a execução dos pipelines pelo ADF. Os notebooks Scala serão acionados conforme definido na orquestração.
+- **Linked Services**: Defina conexões com o Azure Databricks e o Azure Data Lake Storage.
+- **Datasets**: Configure os conjuntos de dados que serão utilizados nos pipelines.
+- **Pipelines**: Crie os pipelines que orquestrarão as tarefas de ETL.
+- **Triggers**: Estabeleça gatilhos para execução automática dos pipelines conforme necessidade.
+
+### 3. Desenvolvimento no Azure Databricks
+
+- **Importação de Notebooks**: Importe os notebooks desenvolvidos em Scala para o workspace do Databricks.
+- **Configuração de Clusters**: Configure os clusters necessários para execução dos notebooks.
+- **Testes Locais**: Realize testes locais para validar o funcionamento dos notebooks antes da integração com o ADF.
+
+### 4. Integração entre ADF e Databricks
+
+- **Atividades de Notebook**: No ADF, adicione atividades que executem os notebooks do Databricks dentro dos pipelines.
+- **Parâmetros**: Configure parâmetros necessários para a execução dinâmica dos notebooks.
+- **Validação**: Teste a integração para garantir que os notebooks sejam executados corretamente via ADF.
+
+### 5. Execução e Monitoramento
+
+- **Execução dos Pipelines**: Inicie a execução dos pipelines manualmente ou via triggers configurados.
+- **Monitoramento**: Utilize as ferramentas de monitoramento do ADF para acompanhar a execução e identificar possíveis falhas.
+- **Logs e Diagnóstico**: Analise os logs gerados para diagnóstico e resolução de problemas.
+
+### 6. Manutenção e Atualizações
+
+- **Versionamento**: Utilize o GitHub para versionar os notebooks e pipelines, facilitando o controle de mudanças.
+- **Documentação**: Mantenha a documentação atualizada para facilitar futuras manutenções e onboarding de novos colaboradores.
+- **Melhorias Contínuas**: Avalie constantemente o desempenho dos pipelines e notebooks, implementando melhorias conforme necessário.
+
 
 ## 💡 Demonstrações com Python
 

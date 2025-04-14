@@ -1,0 +1,21 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "Databricks-pipelinealura"
+		},
+		"databrick_datafactory_link_accessToken": {
+			"value": ""
+		},
+		"databrick_datafactory_link_properties_typeProperties_existingClusterId": {
+			"value": "0412-183331-6h05s9dc"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}

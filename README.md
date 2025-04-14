@@ -5,7 +5,7 @@ Este projeto demonstra a criação e orquestração de pipelines de dados na nuv
 
 ## 📝 Descrição do projeto
 
-Nós, como engenheiros de dados de uma empresa do setor imobiliário, fomos responsáveis por desenvolver um pipeline completo de engenharia de dados. A proposta do projeto é estruturar um Data Lake, iniciar a ingestão dos dados de imóveis na camada de entrada (inbound) e, a partir disso, aplicar as transformações necessárias para evoluí-los através das camadas bronze e silver dentro do lake.
+A case deste projeto consiste em simular a atuação como engenheiros de dados de uma empresa do setor imobiliário, sendo responsável por desenvolver um pipeline completo de engenharia de dados. A proposta do projeto é estruturar um Data Lake, iniciar a ingestão dos dados de imóveis na camada de entrada (inbound) e, a partir disso, aplicar as transformações necessárias para evoluí-los através das camadas bronze e silver dentro do data lake.
 
 Além do processamento, também é fundamental garantir que esse pipeline seja executado automaticamente em intervalos regulares — neste caso, a cada hora — assegurando que os dados estejam sempre atualizados e prontos para uso.
 

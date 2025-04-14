@@ -1,0 +1,9 @@
+{
+	"name": "Databricks-pipelinealura",
+	"location": "eastus2",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "44e14499-8b7e-4937-9083-7001448b3c56",
+		"tenantId": "0084b30a-6cfc-45bc-9452-3008196f3531"
+	}
+}
